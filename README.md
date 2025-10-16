@@ -1,16 +1,87 @@
-# yemek_menu_proje
+🥗 Malzemeye Göre Yemek Öneren Günlük Menü Uygulaması
 
-A new Flutter project.
+Akıllı yemek öneri sistemi — Flutter + FastAPI + PostgreSQL
+Kullanıcılara eldeki malzemelere göre tarif önerir, günlük menü oluşturma, favorilere ekleme ve alışveriş listesi çıkarma gibi özellikler sunar.
 
-## Getting Started
+🚀 Özellikler
 
-This project is a starting point for a Flutter application.
+✅ Kullanıcı Kayıt ve Giriş
+🧠 Malzemeye Göre Tarif Önerme
+📋 Günlük Menü Oluşturma
+❤️ Favorilere Ekleme/Silme
+🛒 Otomatik Alışveriş Listesi Oluşturma
+✍️ Kullanıcıya Özel Tarif Ekleme ve Düzenleme
+🔍 Kategoriye Göre Filtreleme (Etli, Vejetaryen, vb.)
+🎨 Modern ve mobil uyumlu kullanıcı arayüzü (NumNum benzeri tasarım)
 
-A few resources to get you started if this is your first Flutter project:
+🛠️ Kullanılan Teknolojiler
+Katman	Teknoloji
+Mobil	Flutter
+Backend	FastAPI
+Veritabanı	PostgreSQL (UTF8, tr_TR)
+Diğer	HTTP, RESTful API
+📂 Proje Yapısı
+yemek_menu_proje/
+├── backend/           # FastAPI backend (main.py, models, routes)
+├── lib/               # Flutter app code
+│   ├── screens/       # Ekranlar (login, menu, recipe, etc.)
+│   ├── models/        # Recipe, User vs.
+│   ├── services/      # API servisleri
+├── gyk_tr_schema.sql  # Veritabanı şeması ve başlangıç verileri
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+⚙️ Kurulum Talimatları
+🔸 1. Veritabanı Kurulumu (PostgreSQL)
+# Veritabanını oluştur
+createdb gyk_tr --encoding=UTF8 --locale=tr_TR.UTF-8 --template=template0 -U postgres
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Şemayı yükle
+psql -U postgres -d gyk_tr -f gyk_tr_schema.sql
+
+🔸 2. FastAPI Backend Başlatma
+uvicorn main:app --reload
+
+
+➡️ Backend http://localhost:8000 adresinde çalışır.
+
+🔸 3. Flutter Uygulamasını Çalıştırma
+flutter pub get
+flutter run
+
+
+📱 Android emülatör ya da bağlı cihaz gereklidir.
+
+📬 API Endpointleri (Örnek)
+Endpoint	Açıklama
+POST /register	Kullanıcı kaydı
+POST /login	Kullanıcı girişi
+GET /recipes-by-ingredients/{username}	Malzemeye göre tarif öner
+POST /favorites/{username}	Favori ekle
+DELETE /favorites/{username}/{id}	Favori sil
+GET /menu/{username}	Günlük menü getir
+POST /menu-with-data/{username}	Menüye tarif ekle
+GET /shopping-list/{username}	Alışveriş listesi oluştur
+👤 Geliştirici
+
+📛 Handan İpek
+🎓 Bilgisayar Mühendisliği, İstanbul Sabahattin Zaim Üniversitesi
+📧 handanipek@example.com
+
+📍 İstanbul, Türkiye
+💻 Mobil • Yapay Zeka • Web Geliştirme tutkunu
+
+💡 Gelecek Geliştirmeler
+
+📸 Görsel ile tarif arama (image classification)
+📅 Haftalık menü planlayıcı
+🧾 PDF alışveriş listesi oluşturma ve dışa aktarma
+🔔 Fatura / alışveriş hatırlatıcı entegrasyonu
+👨‍👩‍👧 Çok kullanıcı destekli aile menü planı
+
+🌟 Desteklemek İçin
+
+Projeyi beğendiysen ⭐ bırakabilir veya katkıda bulunabilirsin!
+PR’ler ve öneriler her zaman memnuniyetle karşılanır.
+
+📄 Lisans
+
+MIT License © 2025 Handan İpek
